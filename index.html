@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VectorGML</title>
+<link rel="stylesheet" href="studio.css">
+</head>
+<body>
+
+<!-- Screen 1: pick a design -->
+<div id="menu" class="screen">
+	<div class="menu-box">
+		<div class="menu-top"><h1>VectorGML</h1><button id="docsMenuBtn">Documentation</button></div>
+		<div class="create">
+			<input id="newName" type="text" placeholder="New design name (player, tree, ...)" maxlength="40">
+			<button id="createBtn" class="primary">Create</button>
+			<button id="openFileBtn" title="Open a .design.json file. In Chrome and Edge the file is kept up to date as you work.">Open file…</button>
+			<button id="importBtn" title="Add a .design.json file, or an .svg drawing, as a new design">Import…</button>
+			<input id="importFile" type="file" accept=".json,application/json,.svg,image/svg+xml" hidden>
+		</div>
+		<div id="designList"></div>
+		<p class="hint">Designs are stored in this browser. <b>Export GML</b> makes a GameMaker script you can paste straight into your project. <b>Export JSON</b> saves a file you can import back here, and <b>Open file</b> keeps a file on disk up to date while you work.</p>
+	</div>
+</div>
+
+<!-- Screen 2: edit one design -->
+<div id="editor" class="screen" hidden>
+	<header>
+		<button id="backBtn" title="Back to all designs">← Designs</button>
+		<strong id="designName" title="Double-click to rename"></strong>
+		<nav id="mainmenu"></nav>
+		<span class="spacer"></span>
+		<button id="undoBtn" title="Undo (Cmd/Ctrl+Z)">Undo</button>
+		<button id="redoBtn" title="Redo (Shift+Cmd/Ctrl+Z)">Redo</button>
+		<button id="imgBtn" title="Save the design as a PNG or SVG picture">Export image</button>
+		<button id="jsonBtn" title="Save this design as a .design.json file">Export JSON</button>
+		<button id="gmlBtn" class="primary" title="Generate a GameMaker script">Export GML</button>
+	</header>
+	<div id="toolbar"></div>
+	<main>
+		<div id="menubar" hidden></div>
+		<svg id="canvas"><g id="world"></g><g id="rulers"></g></svg>
+		<div id="preview" hidden>
+			<div class="pv-head">
+				<b>Preview</b>
+				<span class="pv-scales"><button data-scale="1">1×</button><button data-scale="2">2×</button><button data-scale="3">3×</button><button data-scale="4">4×</button></span>
+				<select id="pvBg" title="Background">
+					<option value="checker">Checker</option><option value="dark">Dark</option><option value="light">Light</option><option value="green">Grass</option><option value="sky">Sky</option>
+				</select>
+				<button id="pvClose" title="Close the preview">✕</button>
+			</div>
+			<div id="pvBody" class="pv-body"></div>
+			<div id="pvInfo" class="pv-info"></div>
+		</div>
+	</main>
+	<div id="side">
+		<aside id="inspector"></aside>
+		<div id="split" title="Drag to resize"></div>
+		<aside id="tree"></aside>
+	</div>
+	<footer id="status">
+		<span id="stCursor" class="st-cursor"></span>
+		<span id="stInfo" class="st-info"></span>
+		<span id="stHint" class="st-hint"></span>
+		<span class="spacer"></span>
+		<button id="stFile" class="file" hidden></button>
+		<button id="stGrid" class="st-btn" title="Pixel grid (Shift+G)">Grid</button>
+		<button id="stSnap" class="st-btn" title="Snapping while drawing: edges and corners of other shapes, the grid, and the grid size">Snap</button>
+		<button id="stGuides" class="st-btn" title="Smart guides: snap to other shapes while dragging">Guides</button>
+		<button id="stSym" class="st-btn" title="Symmetry drawing (Shift+Y): shapes you draw also appear mirrored across the symmetry axis">Symmetry</button>
+		<button id="stPreview" class="st-btn" title="Show the design at game size (Shift+P)">Preview</button>
+		<span class="zoom">
+			<button id="stZoomOut" class="st-btn" title="Zoom out (-)">−</button>
+			<button id="stZoom" class="st-btn" title="Zoom to 100% (Shift+0)">100%</button>
+			<button id="stZoomIn" class="st-btn" title="Zoom in (=)">+</button>
+			<button id="stFit" class="st-btn" title="Zoom to fit (Shift+1)">Fit</button>
+		</span>
+	</footer>
+</div>
+
+<div id="toast" hidden></div>
+<div id="dialog" class="overlay" hidden><div class="modal" id="dialogBody"></div></div>
+<div id="gml" class="overlay" hidden><div class="modal" id="gmlBody"></div></div>
+<input id="importSvgFile" type="file" accept=".svg,image/svg+xml" hidden>
+<input id="refFile" type="file" accept="image/*" multiple hidden>
+<div id="docs" class="overlay" hidden><div class="modal docs" id="docsBody"></div></div>
+<script src="core.js"></script>
+<script src="boolean.js"></script>
+<script src="linestyle.js"></script>
+<script src="curves.js"></script>
+<script src="studio.js"></script>
+<script src="files.js"></script>
+<script src="ui.js"></script>
+<script src="canvas.js"></script>
+<script src="gml.js"></script>
+<script src="svg.js"></script>
+<script src="reference.js"></script>
+<script src="pattern.js"></script>
+<script src="image.js"></script>
+<script src="docs-content.js"></script>
+<script src="docs.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
