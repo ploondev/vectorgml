@@ -6,6 +6,8 @@ You build a design from shapes, lines, curves and named points. Export it and yo
 
 It is a single static page: no build step, no dependencies, no server, and nothing is uploaded anywhere.
 
+> **Alpha.** VectorGML is an early release. It works and is in daily use, but expect rough edges and some bugs. Designs are stored in your browser, so export a `.design.json` file now and then to keep a copy. Bug reports are welcome: open an issue with what you did and what happened.
+
 ## Features
 
 - Shapes, custom polygons, Bézier curves, rounded corners, and lines with dashes, tapered ends and arrowheads
